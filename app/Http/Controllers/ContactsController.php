@@ -8,6 +8,10 @@ use Carbon\Carbon;
 
 class ContactsController extends Controller
 {
+	public function index()
+	{
+		return request()->user()->contacts;
+	}
 	public function store()
 	{
 
@@ -21,9 +25,15 @@ class ContactsController extends Controller
 
 	public function update(Contact $contact)
 	{
-		// dd($this->validateData());
-		$contact->update($this->validateData());
+		$ret = $contact->update($this->validateData());
 	}
+
+	public function destroy(Contact $contact)
+	{
+		$ret = $contact->delete();
+	}
+
+	
 
 	private function validateData(){
 		return request()->validate([

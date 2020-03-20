@@ -16,4 +16,9 @@ class Contact extends Model
     	// mutator to handle the birthday column
     	$this->attributes['birthday'] = Carbon::parse($birthday);
     }
+
+    public function ($value='')
+    {
+    	# code...
+    }
 }
